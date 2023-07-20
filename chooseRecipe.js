@@ -9,11 +9,11 @@ const chooseRecipe = function (bakeryA, bakeryB, recipes) {
         for (let y = 0; y < recipe.ingredients.length; y++) {
 
           if (bakery[x] === recipe.ingredients[y]) {
-
-            if (recipe.bakery == 1) {
-              recipe.bakery = 2;
+            //Conditional should let the function work if more ingredients and bakerys are added (not tested)
+            if (recipe.available >= 1) {
+              return recipe.available++;
             } else {
-              recipe.bakery = 1;
+              return recipe.available = 1;
             }
           }
         }
@@ -24,7 +24,7 @@ const chooseRecipe = function (bakeryA, bakeryB, recipes) {
   ingredientCheck(bakeryA, recipes);
   ingredientCheck(bakeryB, recipes);
   for (let recipe of recipes) {
-    if (recipe.bakery === 2) {
+    if (recipe.available === recipe.ingredients.length) {
       return recipe.name;
     }
   }
